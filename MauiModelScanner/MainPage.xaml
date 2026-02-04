@@ -1,0 +1,45 @@
+
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="MauiModelScanner.MainPage"
+             Title="Model Scanner (Android)">
+    <ContentPage.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="6" />
+        </Style>
+        <Style TargetType="Picker">
+            <Setter Property="Margin" Value="6" />
+        </Style>
+        <Style TargetType="Switch">
+            <Setter Property="Margin" Value="6" />
+        </Style>
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="Auto,Auto,*,Auto" Padding="12">
+        <!-- TOP BAR: Upload + Model selector -->
+        <Grid Grid.Row="0" ColumnDefinitions="Auto,* ,Auto" VerticalOptions="Center">
+            <Button Text="Upload model" Clicked="OnUploadModelClicked" />
+            <Picker x:Name="ModelPicker" Grid.Column="1" Title="Select model (.onnx)" SelectedIndexChanged="OnModelSelected" />
+            <Switch x:Name="CameraToggle" Grid.Column="2" Toggled="OnCameraToggled" />
+        </Grid>
+
+        <!-- Camera preview -->
+        <toolkit:CameraView x:Name="Camera" Grid.Row="1" HeightRequest="280" />
+
+        <!-- Result -->
+        <ScrollView Grid.Row="2">
+            <VerticalStackLayout>
+                <Label Text="Result:" FontAttributes="Bold" />
+                <Label x:Name="ResultLabel" Text="(no scan yet)" LineBreakMode="WordWrap" />
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- Actions -->
+        <Grid Grid.Row="3" ColumnDefinitions="*,*">
+            <Button Text="Scan from camera" Clicked="OnScanClicked" />
+            <Button Grid.Column="1" Text="Clear" Clicked="OnClearClicked" />
+        </Grid>
+    </Grid>
+</ContentPage>
