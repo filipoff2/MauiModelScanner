@@ -1,0 +1,1 @@
+Captured samples are stored in AppDataDirectory/Dataset at runtime. This folder is just a placeholder.

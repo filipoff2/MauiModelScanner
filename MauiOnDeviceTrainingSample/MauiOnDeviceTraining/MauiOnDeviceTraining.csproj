@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>net8.0-android</TargetFrameworks>
+    <UseMaui>true</UseMaui>
+    <SingleProject>true</SingleProject>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>MauiOnDeviceTraining</RootNamespace>
+    <ApplicationId>com.example.mauiondevicetraining</ApplicationId>
+    <ApplicationVersion>1</ApplicationVersion>
+    <ApplicationDisplayVersion>1.0.0</ApplicationDisplayVersion>
+    <SupportedOSPlatformVersion>21</SupportedOSPlatformVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Maui" Version="*" />
+    <PackageReference Include="CommunityToolkit.Maui.Camera" Version="*" />
+    <PackageReference Include="SkiaSharp" Version="*" />
+    <PackageReference Include="SkiaSharp.Views.Maui.Controls" Version="*" />
+  </ItemGroup>
+
+  <!-- When you build the AndroidTrainingLib AAR, copy it to ./libs and uncomment below -->
+  <!--
+  <ItemGroup>
+    <AndroidLibrary Include="libs/AndroidTrainingLib-release.aar" />
+  </ItemGroup>
+  -->
+
+  <ItemGroup>
+    <MauiAsset Include="Resources\Models\**\*" LogicalName="Models/%(RecursiveDir)%(Filename)%(Extension)" />
+    <MauiAsset Include="Resources\Dataset\**\*" LogicalName="Dataset/%(RecursiveDir)%(Filename)%(Extension)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="CommunityToolkit.Maui" />
+  </ItemGroup>
+</Project>

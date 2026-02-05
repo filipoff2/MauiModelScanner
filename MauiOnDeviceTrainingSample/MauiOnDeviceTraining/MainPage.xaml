@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="MauiOnDeviceTraining.MainPage"
+             Title="On-Device Training (Android)">
+
+  <Grid RowDefinitions="Auto,Auto,*,Auto" Padding="12">
+    <!-- Controls row -->
+    <Grid Grid.Row="0" ColumnDefinitions="Auto,*,Auto" VerticalOptions="Center">
+      <Switch x:Name="CameraToggle" Toggled="OnCameraToggled" />
+      <Label Grid.Column="1" Text="Camera" VerticalOptions="Center"/>
+      <Button Grid.Column="2" Text="Capture sample" Clicked="OnCaptureSample" />
+    </Grid>
+
+    <!-- Camera preview -->
+    <toolkit:CameraView x:Name="Camera" Grid.Row="1" HeightRequest="280" />
+
+    <!-- Status output -->
+    <ScrollView Grid.Row="2">
+      <VerticalStackLayout>
+        <Label Text="Status:" FontAttributes="Bold"/>
+        <Label x:Name="StatusLabel" Text="Ready" LineBreakMode="WordWrap"/>
+      </VerticalStackLayout>
+    </ScrollView>
+
+    <!-- Actions -->
+    <Grid Grid.Row="3" ColumnDefinitions="*,*">
+      <Button Text="Train on device" Clicked="OnTrainClicked"/>
+      <Button Grid.Column="1" Text="Infer (trained)" Clicked="OnInferClicked"/>
+    </Grid>
+  </Grid>
+</ContentPage>
